@@ -82,7 +82,7 @@ namespace AzureSamplesPRCreation
                         {
                             await gitClient.UpdatePullRequestAsync(new GitPullRequest
                             {
-                                Description = comments
+                                Description = comments.Length >= 4000 ? comments.Substring(0, 4000) : comments
                             }, repository.Id, existingPrs.First().PullRequestId);
                         }
                     }
